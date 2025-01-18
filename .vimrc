@@ -7,6 +7,11 @@ endif
 
 set nocompatible
 
+
+" Word wrap
+autocmd FileType text setlocal wrap
+
+
 "####################### Vi Compatible (~/.exrc) #######################
 
 " automatically indent new lines

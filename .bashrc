@@ -26,11 +26,16 @@ alias syu='sudo pacman -Syu'
 alias key='ssh-add ~/.ssh/id_ed25519'
 alias c='clear'
 alias e='exit'
-
+alias notes="cd ~/2nd-brain"
 alias v=vim
-
-#cd
-alias ..='..'
+alias inbox="cd /home/sschlangen/2nd-brain/0-Inbox"
+alias day='cd "/home/sschlangen/2nd-brain/Periodic Notes/Daily"'
+alias week='cd "/home/sschlangen/2nd-brain/Periodic Notes/Weekly"'
+alias month='cd "/home/sschlangen/2nd-brain/Periodic Notes/Monthly"'
+alias ..="cd .."
+alias cv="v /home/sschlangen/clones/ssmedia.tv/content/cv.md"
+alias blog="v /home/sschlangen/clones/ssmedia.tv/content/about.md"
+alias tools="v /home/sschlangen/clones/ssmedia.tv/content/tools.md"
 
 
 # Repos
@@ -49,7 +54,6 @@ eval "$(ssh-agent -s)"
 # Kubectl
 alias k='kubectl'
 source <(kubectl completion bash)
-source /etc/bash_completion
 
 complete -o default -F __start_kubectl k
 
