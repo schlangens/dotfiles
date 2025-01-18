@@ -28,14 +28,14 @@ alias c='clear'
 alias e='exit'
 alias notes="cd ~/2nd-brain"
 alias v=vim
-alias inbox="cd /home/sschlangen/2nd-brain/0-Inbox"
-alias day='cd "/home/sschlangen/2nd-brain/Periodic Notes/Daily"'
-alias week='cd "/home/sschlangen/2nd-brain/Periodic Notes/Weekly"'
-alias month='cd "/home/sschlangen/2nd-brain/Periodic Notes/Monthly"'
+alias inbox="v /home/sschlangen/2nd-brain/0-Inbox"
+alias day='v "/home/sschlangen/2nd-brain/Periodic Notes/Daily"'
+alias week='v "/home/sschlangen/2nd-brain/Periodic Notes/Weekly"'
+alias month='v "/home/sschlangen/2nd-brain/Periodic Notes/Monthly"'
 alias ..="cd .."
-alias cv="v /home/sschlangen/clones/ssmedia.tv/content/cv.md"
-alias blog="v /home/sschlangen/clones/ssmedia.tv/content/about.md"
-alias tools="v /home/sschlangen/clones/ssmedia.tv/content/tools.md"
+alias cv="v /home/sschlangen/clones/scottschlangen.com/content/cv.md"
+alias blog="v /home/sschlangen/clones/scottschlangen.com/content/about.md"
+alias tools="v /home/sschlangen/clones/scottschlangen.com/content/tools.md"
 
 
 # Repos
