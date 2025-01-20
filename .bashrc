@@ -78,10 +78,12 @@ get_timestamp() {
 }
 # Prompt
 # Function to parse the current Git branch
+# Function to parse the current Git branch
 parse_git_branch() {
     local branch=""
     local status=""
-# Get the current branch name
+    
+    # Get the current branch name
     branch=$(git branch 2>/dev/null | grep '^*' | colrm 1 2)
     if [ -n "$branch" ]; then
         # Get detailed status
@@ -101,19 +103,19 @@ parse_git_branch() {
     echo "$branch"
 }
 
-# Function to get the timestamp in local time
+# Function to get the timestamp in EST and UTC
 get_timestamp() {
-    date +"%Y-%m-%d (%I:%M:%S %p)"
+    local est_time=$(TZ="America/Indiana/Indianapolis" date +"%Y-%m-%d (%I:%M:%S %p) EST")
+    local utc_time=$(date -u +"%Y-%m-%d (%H:%M:%S) UTC")
+    echo "$est_time | $utc_time"
 }
 
 # Update the PS1 prompt
 function _update_ps1() {
     local timestamp=$(get_timestamp)
     local git_branch=$(parse_git_branch)
-    PS1="[$timestamp EST] \[\033[01;34m\]\w\[\033[00m\] on \[\033[01;31m\]$git_branch\[\033[00m\]\n(ins)> "
+    PS1="[$timestamp] \[\033[01;34m\]\w\[\033[00m\] on \[\033[01;31m\]$git_branch\[\033[00m\]\n(ins)> "
 }
-PROMPT_COMMAND="_update_ps1"
 
 PROMPT_COMMAND="_update_ps1"
-
 
