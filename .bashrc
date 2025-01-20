@@ -67,18 +67,7 @@ export PATH="/home/sschlangen/.rd/bin:$PATH"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 
-
-# Function to parse the current Git branch
-parse_git_branch() {
-    git branch 2>/dev/null | grep '^*' | colrm 1 2
-}
-# Function to get date/time
-get_timestamp() {
-    date +"%Y-%m-%d (%I:%M:%S %p)"
-}
-# Prompt
-# Function to parse the current Git branch
-# Function to parse the current Git branch
+# Function to parse git brance
 parse_git_branch() {
     local branch=""
     local status=""
