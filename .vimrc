@@ -9,7 +9,7 @@ set nocompatible
 
 
 " Word wrap
-autocmd FileType text setlocal wrap
+autocmd FileType markdown setlocal wrap
 
 
 "####################### Vi Compatible (~/.exrc) #######################
