@@ -65,3 +65,55 @@ alias kn='kubens'
 export PATH="/home/sschlangen/.rd/bin:$PATH"
 ### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+
+
+# Function to parse the current Git branch
+parse_git_branch() {
+    git branch 2>/dev/null | grep '^*' | colrm 1 2
+}
+# Function to get date/time
+get_timestamp() {
+    date +"%Y-%m-%d (%I:%M:%S %p)"
+}
+# Prompt
+# Function to parse the current Git branch
+parse_git_branch() {
+    local branch=""
+    local status=""
+# Get the current branch name
+    branch=$(git branch 2>/dev/null | grep '^*' | colrm 1 2)
+    if [ -n "$branch" ]; then
+        # Get detailed status
+        status=$(git status -sb 2>/dev/null | head -1 | sed -e 's/## //')
+
+        # Parse the status to indicate behind/ahead/changes
+        if [[ $status == *ahead* ]]; then
+            branch="$branch↑"  # Indicate ahead
+        fi
+        if [[ $status == *behind* ]]; then
+            branch="$branch↓"  # Indicate behind
+        fi
+        if [[ $(git status --porcelain 2>/dev/null | wc -l) -gt 0 ]]; then
+            branch="$branch *"  # Indicate uncommitted changes
+        fi
+    fi
+    echo "$branch"
+}
+
+# Function to get the timestamp in local time
+get_timestamp() {
+    date +"%Y-%m-%d (%I:%M:%S %p)"
+}
+
+# Update the PS1 prompt
+function _update_ps1() {
+    local timestamp=$(get_timestamp)
+    local git_branch=$(parse_git_branch)
+    PS1="[$timestamp EST] \[\033[01;34m\]\w\[\033[00m\] on \[\033[01;31m\]$git_branch\[\033[00m\]\n(ins)> "
+}
+PROMPT_COMMAND="_update_ps1"
+
+PROMPT_COMMAND="_update_ps1"
+
+
